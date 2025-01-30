@@ -3,13 +3,13 @@ name: Continuous Integration Workflow
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - "src/**"
       - ".github/workflows/ci.yaml"
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - "src/**"
       - ".github/workflows/ci.yaml"

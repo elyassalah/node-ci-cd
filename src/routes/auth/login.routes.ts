@@ -4,6 +4,7 @@ import { filterRequest, getData } from "../../functions";
 
 const logIn = Router();
 // make all query with id just and send the id with body
+// for testing actions ci and code scanning
 logIn.post("/", async (req: Request, res: Response) => {
   const email: string = filterRequest(req.body.email);
   const password: string = filterRequest(req.body.password);
