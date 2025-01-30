@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const test_crud_routes_1 = __importDefault(require("./test-crud.routes"));
+const signup_routes_1 = __importDefault(require("./signup.routes"));
+const login_routes_1 = __importDefault(require("./login.routes"));
+const verify_code_routes_1 = __importDefault(require("./verify_code.routes"));
+const reset_password_routes_1 = __importDefault(require("./reset_password.routes"));
+const verify_code_rest_password_routes_1 = __importDefault(require("./verify_code_rest_password.routes"));
+const authRoutes = (0, express_1.Router)();
+authRoutes.use("/auth/test", test_crud_routes_1.default);
+authRoutes.use("/auth/sign-up", signup_routes_1.default);
+authRoutes.use("/auth/login", login_routes_1.default);
+authRoutes.use("/auth/verify-code", verify_code_routes_1.default);
+authRoutes.use("/auth/verify-code-reset-password", verify_code_rest_password_routes_1.default);
+authRoutes.use("/auth/reset-password", reset_password_routes_1.default);
+exports.default = authRoutes;
