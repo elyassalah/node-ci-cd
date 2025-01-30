@@ -1,0 +1,46 @@
+name: Continuous Integration Workflow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - ".github/workflows/ci.yaml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - ".github/workflows/ci.yaml"
+
+jobs:
+  test:
+    name: "Run unit tests"
+    defaults:
+      run:
+        shell: bash
+        working-directory: src
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+      - name: Install dependencies
+        run: npm install
+      - name: "Run Tests"
+        run: npm run test
+
+  lint:
+    name: "Run linter"
+    defaults:
+      run:
+        shell: bash
+        working-directory: src
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: "Checkout repository"
+      - name: "Install dependencies"
+        run: npm install
+      - name: "Run Linter"
+        run: npx standard -v
